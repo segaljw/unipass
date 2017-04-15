@@ -1,12 +1,10 @@
 package com.gurpusmaximus.unipass;
 
-import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
@@ -26,7 +24,7 @@ public class CredentialsActivity extends AppCompatActivity {
     LinearLayout containerLayout;
     TextView tvMsg;
     EditText editText;
-    boolean popupWasDisplaying = false;
+    boolean popupWasDisplaying = true;
 
 
     @Override
@@ -48,8 +46,10 @@ public class CredentialsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 popUpWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                 popUpWindow.update(0, 0, 1000, 900);
+                popupWasDisplaying = true;
             }
         });
+
 
         tvMsg = new TextView(this);
         editText = new EditText(this);
@@ -64,6 +64,16 @@ public class CredentialsActivity extends AppCompatActivity {
         containerLayout.addView(editText, layoutParams);
         popUpWindow.setContentView(containerLayout);
         popUpWindow.setFocusable(true);
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (popupWasDisplaying) {
+            popUpWindow.showAtLocation(findViewById(R.id.text_view), Gravity.CENTER, 0, 0);
+            popUpWindow.update(0, 0, 100, 100);
+            popupWasDisplaying = false;
+        }
     }
 
     @Override
@@ -89,29 +99,12 @@ public class CredentialsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE && popupWasDisplaying) {
-            popUpWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
-            popUpWindow.update(0, 0, 1500, 700);
-            popupWasDisplaying = false;
-        }
-        else {
-            popUpWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);
-            popUpWindow.update(0, 0, 1000, 900);
-            popupWasDisplaying = false;
-        }
-
-    }
-
-    @Override
     public void onDestroy() {
-        super.onDestroy();
 
         if (popUpWindow.isShowing()) {
             popupWasDisplaying = true;
         }
+        super.onDestroy();
 
     }
 }
