@@ -24,8 +24,8 @@ public class CredentialsActivity extends AppCompatActivity {
     LinearLayout.LayoutParams layoutParams;
     LinearLayout mainLayout;
     LinearLayout containerLayout;
-    TextView tvMsg;
-    EditText editText;
+    TextView tvMsg1, tvMsg2, tvMsg3;
+    EditText editText1, editText2, editText3;
     boolean popupWasDisplaying = true;
 
 
@@ -46,7 +46,6 @@ public class CredentialsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 findViewById(R.id.full_view).setBackground(new ColorDrawable(Color.BLUE));
-                Log.d("STUFF", "" + view.toString());
             }
         });
 
@@ -54,24 +53,48 @@ public class CredentialsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 popUpWindow.showAtLocation(findViewById(R.id.text_view), Gravity.CENTER, 0, 0);
-                popUpWindow.update(0, 0, 1000, 900);
+                popUpWindow.update(0, 0, 1000, 1000);
                 popupWasDisplaying = true;
-                Log.d("ID", "" + R.id.text_view);
             }
         });
 
 
-        tvMsg = new TextView(this);
-        editText = new EditText(this);
+        tvMsg1 = new TextView(this);
+        tvMsg1.append("Enter your account credentials.\n");
+        tvMsg1.append("   Account For:");
+        tvMsg1.setWidth(1000);
+        tvMsg1.setHeight(150);
 
-        tvMsg.setText("Enter your account credentials. \n\n Username: \n\n");
+        tvMsg2 = new TextView(this);
+        tvMsg2.append("   Username:");
+        tvMsg2.setWidth(1000);
+        tvMsg2.setHeight(150);
+
+        tvMsg3 = new TextView(this);
+        tvMsg3.append("   Password:");
+        tvMsg3.setWidth(1000);
+        tvMsg3.setHeight(150);
+
+        editText1 = new EditText(this);
+        //editText1.setBackground(new ColorDrawable(Color.WHITE));
+
+        editText2 = new EditText(this);
+        //editText2.setBackground(new ColorDrawable(Color.WHITE));
+
+        editText3 = new EditText(this);
+        //editText3.setBackground(new ColorDrawable(Color.WHITE));
 
         layoutParams = new LinearLayout.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT,
                 Toolbar.LayoutParams.WRAP_CONTENT);
-        containerLayout.setOrientation(LinearLayout.HORIZONTAL);
+        containerLayout.setOrientation(LinearLayout.VERTICAL);
         containerLayout.setBackground(new ColorDrawable(android.graphics.Color.rgb(125, 169, 10)));
-        containerLayout.addView(tvMsg, layoutParams);
-        containerLayout.addView(editText, layoutParams);
+        containerLayout.addView(tvMsg1, layoutParams);
+        containerLayout.addView(editText1, layoutParams);
+        containerLayout.addView(tvMsg2, layoutParams);
+        containerLayout.addView(editText2, layoutParams);
+        containerLayout.addView(tvMsg3, layoutParams);
+        containerLayout.addView(editText3, layoutParams);
+
         popUpWindow.setContentView(containerLayout);
         popUpWindow.setFocusable(true);
     }
