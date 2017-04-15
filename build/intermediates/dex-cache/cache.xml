@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\dev\unipass\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="08a5af596e1d16d23b2b87248540530673b40dbd">
+        <dex dex="C:\dev\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_11fae9dd2241af6ce0094f6b78e3f1a6aed7c833\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\dev\unipass\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\dev\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_45ca102c1235286521337d74a3163f15877011b4\classes.dex" />
+    </item>
+
+</items>
