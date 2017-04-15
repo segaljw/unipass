@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UniPass</string>
+    <string name="action_settings">Settings</string>
+    <string name="default_password_text">No Passwords Here!!!</string>
+</resources>
