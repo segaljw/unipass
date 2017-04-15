@@ -1,10 +1,12 @@
 package com.gurpusmaximus.unipass;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
@@ -40,13 +42,21 @@ public class CredentialsActivity extends AppCompatActivity {
         mainLayout = new LinearLayout(this);
         popUpWindow = new PopupWindow(this);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        findViewById(R.id.full_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findViewById(R.id.full_view).setBackground(new ColorDrawable(Color.BLUE));
+                Log.d("STUFF", "" + view.toString());
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popUpWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                popUpWindow.showAtLocation(findViewById(R.id.text_view), Gravity.CENTER, 0, 0);
                 popUpWindow.update(0, 0, 1000, 900);
                 popupWasDisplaying = true;
+                Log.d("ID", "" + R.id.text_view);
             }
         });
 
@@ -70,9 +80,9 @@ public class CredentialsActivity extends AppCompatActivity {
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         if (popupWasDisplaying) {
-            popUpWindow.showAtLocation(findViewById(R.id.text_view), Gravity.CENTER, 0, 0);
-            popUpWindow.update(0, 0, 100, 100);
-            popupWasDisplaying = false;
+            //popUpWindow.showAtLocation(findViewById(R.id.text_view), Gravity.CENTER, 0, 0);
+            //popUpWindow.update(0, 0, 100, 100);
+            //popupWasDisplaying = false;
         }
     }
 
