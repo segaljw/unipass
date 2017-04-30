@@ -3,21 +3,156 @@
 
     <item
         is-multidex="true"
-        jar="C:\dev\unipass\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Jake\.android\build-cache\a07179661b722372804a476bcc6d26f8a6af9394\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="e3439bfb19874eedcbfd4a5cb52a570f8df0aa14">
-        <dex dex="C:\dev\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_11fae9dd2241af6ce0094f6b78e3f1a6aed7c833\classes.dex" />
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1209b9ea6532d704665bcc6dcb0c1410ecf6ec69\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\dev\unipass\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\Jake\.android\build-cache\b351b48ce0554f53753462d7bc1b3b3cb739900a\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\dev\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_45ca102c1235286521337d74a3163f15877011b4\classes.dex" />
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_67e06e4faaec0c9eec248466760ff2d36a8cd0fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\68b9a888d087b091ff60fcb16eff08656897d5fd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_266661e9e08c50ff5a9e926f4336bb21a52acfa1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\2fe5d28bfad8e319370cb049b776c9f2f2d20278\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_48b659b6c0a3eeea5f313fd29b850aa161cba62d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.2.0_e1c9cfc0ec794915e7146e9f67fb423b8b2682d6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\unipass\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e1462e0732aca95a72794c13af59ce56fb58e9e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\96e90738d0ea5bc893d2c9a82ec020511b18881c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_71bda07a343d63a817f5273720f963e61167112f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\cb4be80fe69e23effe82dcf3e0725a787cbab81f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c0c87b3a1043688eb605879820a929cd7f8fa66e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\725e64eb24f6964009d43923354b679cea004146\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_016defa7fae16807fa6ca0c1c3fd24287dad4fe6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\30a573ca6198bfe7b38837eca42d5231e6c39493\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f76d64b741b584c2e70b1d935ab50085c5fc9dee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\af35cc10b0c3f3d28f9223ba2db07fb1e9a3f4fc\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_56d62f9370e6ab70f03baf60afac5c694c354caa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\847c094f7640b9c68fe7222453232a666de274d0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bd17bcf122e4856a13fd3a568a2ba1afb0bd0935\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\df0dad0313a7cd7f3e2391417310749ad2213a82\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_94688df0a904584fe4e86e5d7b77f95dcd3bba30\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_4dbcc83f95bc164b1f7f677e20f3f37840f65573\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\12f6bdf333fa63b56e2eac831a5c76399147695d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_17f51642be347ad267332199b865233a4d22da91\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\.android\build-cache\5c70b9a569fef8ef30dfffb9f9e2e2902b8cb966\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7d82c54ec0181de0c2d6e53466e4ee4614714bbf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jake\unipass\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ba1f61ade580c9c5cddf14260528133af2c6fbde">
+        <dex dex="C:\Users\Jake\unipass\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0be9d8030ac16dbeef6ee4820d054abb30bb8f6e\classes.dex" />
     </item>
 
 </items>
