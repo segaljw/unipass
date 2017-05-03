@@ -2,6 +2,7 @@ package com.gurpusmaximus.unipass;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -68,7 +69,8 @@ public class User extends AppCompatActivity {
             //Accounts are separated with regex \n so split on that.
             String[] lines = fileContent.split("\n");
             for (String line: lines) {
-                users.add(line);
+                Log.i("Decrypted Line", line);
+                users.add("Username/Password:" + line);
                 //update the adapter to change the ListView.
                 adapter.notifyDataSetChanged();
             }

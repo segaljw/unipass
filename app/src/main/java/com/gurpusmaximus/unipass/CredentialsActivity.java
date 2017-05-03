@@ -132,10 +132,12 @@ public class CredentialsActivity extends AppCompatActivity {
                     //Rewrite previous contents of encrypted file.
                     outputStream.write(b);
                     //Append newly received account info and encrypt before writing..
-                    outputStream.write(encryptMsg(receive.getString("username") + " is Username ",
+                    outputStream.write(encryptMsg(receive.getString("username")
+                                    + " " +  receive.getString("password") + "\n",
                             generateKey()));
-                    outputStream.write(encryptMsg(receive.getString("password") + " is Password\n",
-                            generateKey()));
+                    Log.i("Encrypted User+Pass", new String(encryptMsg(receive.getString("username")
+                                    + " " +  receive.getString("password") + "\n",
+                            generateKey())));
                     outputStream.close();
 
                     Log.i("adding file","data has been added to existing file");
@@ -146,10 +148,12 @@ public class CredentialsActivity extends AppCompatActivity {
                 //if file doesn't exist no need to write previous data.
                 try {
                     outputStream = openFileOutput(accountString, Context.MODE_PRIVATE);
-                    outputStream.write(encryptMsg(receive.getString("username") + " is Username ",
+                    outputStream.write(encryptMsg(receive.getString("username")
+                                    + " " +  receive.getString("password") + "\n",
                             generateKey()));
-                    outputStream.write(encryptMsg(receive.getString("password") + " is Password\n",
-                            generateKey()));
+                    Log.i("Encrypted User+Pass", new String(encryptMsg(receive.getString("username")
+                                    + " " +  receive.getString("password") + "\n",
+                            generateKey())));
                     outputStream.close();
                     Log.i("adding file","file is being created and data has been added");
                 } catch (Exception e) {

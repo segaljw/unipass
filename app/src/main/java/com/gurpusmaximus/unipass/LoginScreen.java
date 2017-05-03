@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,6 +76,8 @@ public class LoginScreen extends AppCompatActivity {
                         outputStream.write(encryptMsg(String.valueOf(masterPasswordField.getText()),
                                 generateKey()));
                         outputStream.close();
+                        Log.i("Encrypted master key", new String(encryptMsg(String.valueOf(masterPasswordField.getText()),
+                                generateKey())));
                         //If successfully (No exception thrown) then go to home screen activity.
                         credentialsIntent.putExtra("masterkey", masterKey);
                         startActivity(credentialsIntent);
