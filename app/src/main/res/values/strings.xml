@@ -8,4 +8,5 @@
     <string name="enter_username">Enter Username</string>
     <string name="enter_account_name">Enter Account Name</string>
     <string name="add_account">ADD ACCOUNT</string>
+    <string name="master_key_hint">Master key must be 16, 24, or 32 characters.</string>
 </resources>

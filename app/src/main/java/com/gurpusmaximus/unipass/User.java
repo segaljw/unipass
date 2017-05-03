@@ -39,6 +39,7 @@ public class User extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         masterKey = getIntent().getExtras().getByteArray("masterkey");
@@ -50,11 +51,11 @@ public class User extends AppCompatActivity {
         listOfUsers = (ListView)findViewById(R.id.user_list);
         listOfUsers.setAdapter(adapter);
 
-        String yourFilePath = getApplicationContext().getFilesDir() + "/" + accountName;
+        String accountFilePath = getApplicationContext().getFilesDir() + "/" + accountName;
+        File accountFile = new File(accountFilePath);
 
-        File yourFile = new File( yourFilePath );
         try{
-            RandomAccessFile f = new RandomAccessFile(yourFile, "r");
+            RandomAccessFile f = new RandomAccessFile(accountFile, "r");
             byte[] b = new byte[(int)f.length()];
             f.readFully(b);
 
