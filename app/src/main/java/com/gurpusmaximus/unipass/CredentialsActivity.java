@@ -18,7 +18,21 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.RandomAccessFile;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.InvalidParameterSpecException;
 import java.util.ArrayList;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 
 public class CredentialsActivity extends AppCompatActivity {
@@ -32,13 +46,15 @@ public class CredentialsActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     String accountString = "";
     FileOutputStream outputStream;
-
-
+    static Bundle extrasFromLogin;
+    static byte[] masterKey;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        extrasFromLogin = getIntent().getExtras();
+        masterKey = extrasFromLogin.getByteArray("masterkey");
         setContentView(R.layout.activity_credentials);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,6 +88,7 @@ public class CredentialsActivity extends AppCompatActivity {
                   //send bundle containing username and password
                   String temp = (String)parent.getItemAtPosition(position);
                   startUser.putExtra("account",temp);
+                  startUser.putExtra("masterkey", masterKey);
                   startActivity(startUser);
               }
           }
@@ -90,23 +107,34 @@ public class CredentialsActivity extends AppCompatActivity {
             receive = data.getExtras();
             accountString = receive.getString("account");
             Log.i("activityResult","creating files");
+            file = getApplicationContext().getFileStreamPath(accountString);
 
             if (accounts.contains(accountString)) {
-                try(FileWriter fw = new FileWriter(getApplicationContext().getFilesDir() + "/" + accountString, true);
-                    BufferedWriter bw = new BufferedWriter(fw)) {
-                    bw.append(receive.getString("username")+ " ");
-                    bw.append(receive.getString("password")+ " ");
-                    bw.flush();
+                try{
+
+                    RandomAccessFile f = new RandomAccessFile(file, "r");
+                    byte[] b = new byte[(int)f.length()];
+                    f.readFully(b);
+
+                    outputStream = openFileOutput(accountString, Context.MODE_PRIVATE);
+                    outputStream.write(b);
+                    outputStream.write(encryptMsg(receive.getString("username") + " is Username ",
+                            generateKey()));
+                    outputStream.write(encryptMsg(receive.getString("password") + " is Password\n",
+                            generateKey()));
+                    outputStream.close();
+
                     Log.i("adding file","data has been added to existing file");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
-                file = getApplicationContext().getFileStreamPath(accountString);
                 try {
                     outputStream = openFileOutput(accountString, Context.MODE_PRIVATE);
-                    outputStream.write(receive.getString("username").getBytes());
-                    outputStream.write(receive.getString("password").getBytes());
+                    outputStream.write(encryptMsg(receive.getString("username") + " is Username ",
+                            generateKey()));
+                    outputStream.write(encryptMsg(receive.getString("password") + " is Password\n",
+                            generateKey()));
                     outputStream.close();
                     Log.i("adding file","file is being created and data has been added");
                 } catch (Exception e) {
@@ -123,7 +151,6 @@ public class CredentialsActivity extends AppCompatActivity {
 
     }
     public ArrayList<String> GetFileNames() {
-
         ArrayList<String> forReturn = new ArrayList<>();
 
         for(File f : getApplicationContext().getFilesDir().listFiles())
@@ -132,15 +159,11 @@ public class CredentialsActivity extends AppCompatActivity {
         return forReturn;
     }
 
-
-
-
     @Override
     public void onResume() {
         super.onResume();
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -164,5 +187,20 @@ public class CredentialsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static SecretKey generateKey()
+            throws NoSuchAlgorithmException, InvalidKeySpecException {
+        return new SecretKeySpec(masterKey, "AES");
+    }
+
+    public static byte[] encryptMsg(String message, SecretKey secret)
+            throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
+            InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException,
+            UnsupportedEncodingException {
+        /* Encrypt the message. */
+        Cipher cipher = null;
+        cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, secret);
+        return cipher.doFinal(message.getBytes("UTF-8"));
+    }
 
 }

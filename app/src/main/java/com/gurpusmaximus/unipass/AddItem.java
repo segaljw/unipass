@@ -31,8 +31,8 @@ public class AddItem extends AppCompatActivity {
 
                 Intent returnIntent = new Intent();
                 Bundle bundle = new Bundle();
-                bundle.putString("username", usernameString+ " ");
-                bundle.putString("password", passwordString+ "\n");
+                bundle.putString("username", usernameString);
+                bundle.putString("password", passwordString);
                 bundle.putString("account", accountString);
                 returnIntent.putExtras(bundle);
                 setResult(RESULT_OK, returnIntent);

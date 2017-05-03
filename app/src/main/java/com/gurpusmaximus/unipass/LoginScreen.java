@@ -65,6 +65,7 @@ public class LoginScreen extends AppCompatActivity {
                                 generateKey()));
 
                         outputStream.close();
+                        credentialsIntent.putExtra("masterkey", masterKey);
                         startActivity(credentialsIntent);
                         finish();
                     } catch (Exception e) {
@@ -88,6 +89,7 @@ public class LoginScreen extends AppCompatActivity {
                         f.readFully(b);
 
                         if (Arrays.equals(b, bInput)) {
+                            credentialsIntent.putExtra("masterkey", masterKey);
                             startActivity(credentialsIntent);
                             finish();
                         } else {
@@ -124,16 +126,4 @@ public class LoginScreen extends AppCompatActivity {
         return cipher.doFinal(message.getBytes("UTF-8"));
     }
 
-    public static String decryptMsg(byte[] cipherText, SecretKey secret)
-            throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidParameterSpecException,
-            InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException,
-            IllegalBlockSizeException, UnsupportedEncodingException
-    {
-        /* Decrypt the message, given derived encContentValues and initialization vector. */
-        Cipher cipher = null;
-        cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, secret);
-        String decryptString = new String(cipher.doFinal(cipherText), "UTF-8");
-        return decryptString;
-    }
 }
