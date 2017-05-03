@@ -7,6 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * AddItem Activity allows user to add a new account of a certain type.
+ *
+ * This data will be encrypted to a file once passed back to CredentialsActivity.
+ */
+
 public class AddItem extends AppCompatActivity {
 
     private EditText account, username, password;
@@ -22,6 +28,7 @@ public class AddItem extends AppCompatActivity {
         username = (EditText)findViewById(R.id.user_name);
         password = (EditText)findViewById(R.id.pass_word);
 
+        //After submit add each item iteratively into a bundle.
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

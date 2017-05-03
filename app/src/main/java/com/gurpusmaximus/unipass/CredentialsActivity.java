@@ -14,13 +14,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -34,7 +31,12 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-
+/**
+ * Activity CredentialActivity will Load every only after correct masterKey is given.
+ *
+ * Home screen for all account types.
+ * Clicking on an account will move to a list view of the decrypted account credentials.
+ */
 public class CredentialsActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
@@ -53,18 +55,24 @@ public class CredentialsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Get passed masterKey for encryption use.
         extrasFromLogin = getIntent().getExtras();
         masterKey = extrasFromLogin.getByteArray("masterkey");
         setContentView(R.layout.activity_credentials);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        accounts.addAll(GetFileNames());
+        //Add all profile names to an ArrayList from the filenames in the current directory.
+        accounts.addAll(getFileNames());
+        //Do not add the master.
+        accounts.remove("master");
 
+        //Used to sync the ListView with accounts
         adapter = new ArrayAdapter<>(this,
                 R.layout.activity_listview,
                 accounts);
 
+        //Set the ListView.
         listOfAccounts = (ListView)findViewById(R.id.account_list);
         listOfAccounts.setAdapter(adapter);
 
@@ -80,14 +88,14 @@ public class CredentialsActivity extends AppCompatActivity {
             }
         });
 
-        //start User activity from click on Account in ListView
+        //Start User activity after clicking on an Account in ListView
         listOfAccounts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
               @Override
               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                   Intent startUser = new Intent(view.getContext(), User.class);
                   //send bundle containing username and password
                   String temp = (String)parent.getItemAtPosition(position);
-                  startUser.putExtra("account",temp);
+                  startUser.putExtra("account", temp);
                   startUser.putExtra("masterkey", masterKey);
                   startActivity(startUser);
               }
@@ -97,7 +105,9 @@ public class CredentialsActivity extends AppCompatActivity {
 
     }
 
-    // Receive Account string for use in ListView and bundle of username and password
+    /**
+     * Receive Account string for use in ListView and bundle of username and password
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
 
@@ -109,15 +119,19 @@ public class CredentialsActivity extends AppCompatActivity {
             Log.i("activityResult","creating files");
             file = getApplicationContext().getFileStreamPath(accountString);
 
+            //If the file already contains an account.
             if (accounts.contains(accountString)) {
                 try{
 
+                    //Get all bytes of encrypted file.
                     RandomAccessFile f = new RandomAccessFile(file, "r");
                     byte[] b = new byte[(int)f.length()];
                     f.readFully(b);
 
                     outputStream = openFileOutput(accountString, Context.MODE_PRIVATE);
+                    //Rewrite previous contents of encrypted file.
                     outputStream.write(b);
+                    //Append newly received account info and encrypt before writing..
                     outputStream.write(encryptMsg(receive.getString("username") + " is Username ",
                             generateKey()));
                     outputStream.write(encryptMsg(receive.getString("password") + " is Password\n",
@@ -129,6 +143,7 @@ public class CredentialsActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
+                //if file doesn't exist no need to write previous data.
                 try {
                     outputStream = openFileOutput(accountString, Context.MODE_PRIVATE);
                     outputStream.write(encryptMsg(receive.getString("username") + " is Username ",
@@ -150,7 +165,11 @@ public class CredentialsActivity extends AppCompatActivity {
         }
 
     }
-    public ArrayList<String> GetFileNames() {
+
+    /**
+     * Will return a list of all files in main working directory.
+     */
+    public ArrayList<String> getFileNames() {
         ArrayList<String> forReturn = new ArrayList<>();
 
         for(File f : getApplicationContext().getFilesDir().listFiles())
@@ -186,17 +205,22 @@ public class CredentialsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    /**
+     * Method will generate a secret key based on the given master key.
+     */
     public static SecretKey generateKey()
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         return new SecretKeySpec(masterKey, "AES");
     }
 
+    /**
+     * Method will encrypt a given String with the generated secret key.
+     */
     public static byte[] encryptMsg(String message, SecretKey secret)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
             InvalidParameterSpecException, IllegalBlockSizeException, BadPaddingException,
             UnsupportedEncodingException {
-        /* Encrypt the message. */
+        // Encrypt the message with AES.
         Cipher cipher = null;
         cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secret);

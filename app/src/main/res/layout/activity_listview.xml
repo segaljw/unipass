@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/list_text"
     android:padding="10dip"
-    android:textSize="16dip"
+    android:textSize="16sp"
     android:textStyle="bold"
     >
 
