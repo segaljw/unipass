@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gurpusmaximus.unipass">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,9 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddItem"
-            android:theme="@style/AppTheme.PopUpTheme"
-            ></activity>
+        <activity
+            android:name=".AddItem"
+            android:theme="@style/AppTheme.PopUpTheme" />
+        <activity android:name=".User"></activity>
     </application>
 
 </manifest>
